@@ -4,7 +4,6 @@ import logging
 logging.basicConfig(filename='renomeacao_arquivos.log', level=logging.INFO)
 
 def buscar_arquivos(diretorio, nomes_arquivos):
-    """Busca os arquivos no diretório ou em pastas com o nome do arquivo."""
     arquivos_encontrados = {}
     for nome in nomes_arquivos:
         caminho = os.path.join(diretorio, nome)
@@ -26,7 +25,6 @@ def buscar_arquivos(diretorio, nomes_arquivos):
     return arquivos_encontrados
 
 def solicitar_novos_nomes_em_ordem(arquivos_encontrados):
-    """Solicita ao usuário uma lista de novos nomes, separados por vírgulas ou novas linhas."""
     print("\nArquivos encontrados:")
     for i, nome in enumerate(arquivos_encontrados.keys(), start=1):
         print(f"{i}. {nome}")
@@ -43,7 +41,6 @@ def solicitar_novos_nomes_em_ordem(arquivos_encontrados):
     return dict(zip(arquivos_encontrados.keys(), novos_nomes))
 
 def renomear_arquivos(diretorio_origem, diretorio_destino, arquivos_encontrados, novos_nomes):
-    """Renomeia os arquivos e os salva na nova pasta."""
     os.makedirs(diretorio_destino, exist_ok=True)  
 
     for nome_original, caminho_antigo in arquivos_encontrados.items():
